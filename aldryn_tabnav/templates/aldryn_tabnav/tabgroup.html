@@ -1,0 +1,39 @@
+{% load cms_tags i18n %}
+
+<ul class="nav nav-tabs plugin-tabs">
+    {% for tab in instance.child_plugin_instances %}
+        {% if tab.is_dropdown %}
+        <li class="dropdown">
+            <a href="#" id="{{ tab.tab_html_id }}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Dropdown" %} <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="{{ tab.tab_html_id }}">
+                {% for inner_tab in tab.child_plugin_instances %}
+                <li><a href="#{{ inner_tab.tab_html_id }}" data-toggle="tab" tabindex="-1" >{{ inner_tab.tab_title|safe }}
+                {% if inner_tab.tab_extra_icon %}<span class="{{ inner_tab.tab_icon_class }}"></span>{% endif %}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% else %}
+        <li{% if forloop.first %} class="active"{% endif %}>
+            <a href="#{{ tab.tab_html_id }}" data-toggle="tab">{{ tab.tab_title|safe }}
+            {% if tab.tab_extra_icon %}<span class="{{ tab.tab_icon_class }}"></span>{% endif %}
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="tab-content">
+    {% for tab in instance.child_plugin_instances %}
+        {% if tab.is_dropdown %}
+            {% for inner_tab in tab.child_plugin_instances %}
+                <div class="tab-pane fade" id="{{ inner_tab.tab_html_id }}">
+                    {% render_plugin inner_tab %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="tab-pane fade{% if forloop.first %} active in{% endif %}" id="{{ tab.tab_html_id }}">
+                {% render_plugin tab %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

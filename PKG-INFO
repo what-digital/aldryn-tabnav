@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: aldryn-tabnav
+Version: 0.1.1
+Summary: Aldryn TabNav
+=============
+
+Django CMS plugin for creating tabbed navigation.
+
+
+Installation
+============
+
+Aldryn Platform Users
+---------------------
+
+Choose a site you want to install the add-on to from the dashboard. Then go
+to ``Apps -> Install app`` and click ``Install`` next to ``Tabnav`` app.
+
+Redeploy the site.
+
+Manual Installation
+-------------------
+
+::
+
+    pip install aldryn-tabnav
+
+Add ``aldryn_tabnav`` to ``INSTALLED_APPS``.
+
+Home-page: https://github.com/aldryn/aldryn-tabnav
+Author: Divio AG
+Author-email: info@divio.ch
+License: LICENSE
+Description: UNKNOWN
+Platform: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
